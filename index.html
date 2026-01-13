@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Field Booking - Book Your Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sports Field Booking</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sports">Sports</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Welcome to Sports Field Booking</h2>
+            <p>Book fields for football, basketball, tennis, and more. Easy online reservations for all your sports needs.</p>
+            <a href="#booking" class="btn">Book Now</a>
+        </div>
+    </section>
+
+    <section id="sports" class="sports">
+        <div class="container">
+            <h2>Available Sports</h2>
+            <div class="sports-grid">
+                <div class="sport-item">
+                    <h3>Football</h3>
+                    <p>Grass and turf fields available.</p>
+                </div>
+                <div class="sport-item">
+                    <h3>Basketball</h3>
+                    <p>Indoor and outdoor courts.</p>
+                </div>
+                <div class="sport-item">
+                    <h3>Tennis</h3>
+                    <p>Clay and hard courts.</p>
+                </div>
+                <div class="sport-item">
+                    <h3>Volleyball</h3>
+                    <p>Beach and indoor volleyball.</p>
+                </div>
+                <div class="sport-item">
+                    <h3>Badminton</h3>
+                    <p>Indoor courts for badminton.</p>
+                </div>
+                <div class="sport-item">
+                    <h3>Swimming</h3>
+                    <p>Pool reservations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking">
+        <div class="container">
+            <h2>Book a Field</h2>
+            <form action="booking.php" method="POST" id="booking-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="sport">Sport:</label>
+                    <select id="sport" name="sport" required>
+                        <option value="">Select Sport</option>
+                        <option value="football">Football</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="tennis">Tennis</option>
+                        <option value="volleyball">Volleyball</option>
+                        <option value="badminton">Badminton</option>
+                        <option value="swimming">Swimming</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (hours):</label>
+                    <input type="number" id="duration" name="duration" min="1" max="4" required>
+                </div>
+                <button type="submit" class="btn">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We provide easy online booking for sports fields across various sports. Whether you're playing casually or competitively, we've got the facilities for you.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form action="contact.php" method="POST" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
