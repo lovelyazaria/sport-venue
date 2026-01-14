@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Field Booking - Book Your Game</title>
+    <title>Home - Sports Field Booking</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,11 +14,11 @@
                 <h1>Sports Field Booking</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#sports">Sports</a></li>
-                <li><a href="#booking">Booking</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +28,7 @@
         <div class="hero-content">
             <h2>Welcome to Sports Field Booking</h2>
             <p>Book fields for football, basketball, tennis, and more. Easy online reservations for all your sports needs.</p>
-            <a href="#booking" class="btn">Book Now</a>
+            <a href="booking.html" class="btn">Book Now</a>
         </div>
     </section>
 
@@ -38,129 +38,36 @@
             <h2>Available Sports</h2>
             <div class="sports-grid">
                 <div class="sport-item">
-                    <h3>Football</h3>
+                    <h3>⚽ Football</h3>
                     <p>Grass and turf fields available.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
                 <div class="sport-item">
-                    <h3>Basketball</h3>
+                    <h3>🏀 Basketball</h3>
                     <p>Indoor and outdoor courts.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
                 <div class="sport-item">
-                    <h3>Tennis</h3>
+                    <h3>🎾 Tennis</h3>
                     <p>Clay and hard courts.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
                 <div class="sport-item">
-                    <h3>Volleyball</h3>
+                    <h3>🏐 Volleyball</h3>
                     <p>Beach and indoor volleyball.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
                 <div class="sport-item">
-                    <h3>Badminton</h3>
+                    <h3>🏸 Badminton</h3>
                     <p>Indoor courts for badminton.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
                 <div class="sport-item">
-                    <h3>Swimming</h3>
+                    <h3>🏊 Swimming</h3>
                     <p>Pool reservations.</p>
+                    <a href="booking.html" class="btn-small">Book Now</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" class="booking">
-        <div class="container">
-            <h2>Book a Field</h2>
-            <form action="booking.php" method="POST" id="booking-form">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="sport">Sport:</label>
-                    <select id="sport" name="sport" required>
-                        <option value="">Select Sport</option>
-                        <option value="1">Football</option>
-                        <option value="2">Basketball</option>
-                        <option value="3">Tennis</option>
-                        <option value="4">Volleyball</option>
-                        <option value="5">Badminton</option>
-                        <option value="6">Swimming</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="field">Field:</label>
-                    <select id="field" name="field_id" required>
-                        <option value="">Select Field</option>
-                        <option value="1">Main Football Field</option>
-                        <option value="2">Training Field 1</option>
-                        <option value="3">Indoor Court 1</option>
-                        <option value="4">Outdoor Court</option>
-                        <option value="5">Clay Court 1</option>
-                        <option value="6">Hard Court 1</option>
-                        <option value="7">Beach Volleyball Court</option>
-                        <option value="8">Indoor Volleyball Court</option>
-                        <option value="9">Badminton Court 1</option>
-                        <option value="10">Badminton Court 2</option>
-                        <option value="11">Main Pool</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="time">Time:</label>
-                    <input type="time" id="time" name="time" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="duration">Duration (hours):</label>
-                    <input type="number" id="duration" name="duration" min="1" max="4" required>
-                </div>
-
-                <button type="submit" class="btn">Submit Booking</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>We provide easy online booking for sports fields across various sports. Whether you're playing casually or competitively, we've got the facilities for you.</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <form action="contact.php" method="POST" id="contact-form">
-                <div class="form-group">
-                    <label for="contact-name">Name:</label>
-                    <input type="text" id="contact-name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="contact-email">Email:</label>
-                    <input type="email" id="contact-email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-
-                <button type="submit" class="btn">Send Message</button>
-            </form>
         </div>
     </section>
 

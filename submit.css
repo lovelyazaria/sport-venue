@@ -1,0 +1,120 @@
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Kartu */
+.card {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.card-header {
+    background-color: #10b981; /* Warna Hijau */
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.icon-circle {
+    background: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    font-size: 30px;
+    color: #10b981;
+}
+
+/* Konten / Detail */
+.card-body {
+    padding: 25px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.value {
+    color: #1f2937;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Tombol */
+.btn-group {
+    margin-top: 25px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+
+.btn-secondary:hover {
+    background-color: #d1d5db;
+}
+
+/* Footer teks kecil */
+.footer-text {
+    text-align: center;
+    font-size: 12px;
+    color: #9ca3af;
+    padding-bottom: 20px;
+    font-style: italic;
+}

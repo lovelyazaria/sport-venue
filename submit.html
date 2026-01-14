@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Successful - Sports Field Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Success Section with NEW CLASSES -->
+    <section class="success-page">
+        <div class="success-card">
+            <!-- Header Success -->
+            <div class="success-header">
+                <div class="success-icon-circle">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <h1>Booking Berhasil! 🎉</h1>
+                <p class="booking-id-text">ID Booking: <span id="booking-id-display">#000</span></p>
+            </div>
+
+            <!-- Booking Details -->
+            <div class="booking-info-list">
+                <div class="info-row">
+                    <span class="info-label">Nama Pelanggan</span>
+                    <span class="info-value" id="booking-name">-</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Cabang Olahraga</span>
+                    <span class="info-value" id="booking-sport">-</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Tanggal</span>
+                    <span class="info-value" id="booking-date">-</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Jam Mulai</span>
+                    <span class="info-value special" id="booking-time">WIB</span>
+                </div>
+
+                <div class="info-row">
+                    <span class="info-label">Durasi</span>
+                    <span class="info-value special" id="booking-duration">Jam</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-save" onclick="window.print()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                        <polyline points="17 21 17 13 7 13 7 21"/>
+                        <polyline points="7 3 7 8 15 8"/>
+                    </svg>
+                    Simpan Bukti
+                </button>
+
+                <a href="index.html" class="btn-home">
+                    Kembali ke Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Populate booking details
+        window.addEventListener('DOMContentLoaded', function() {
+            const bookingId = getUrlParameter('id');
+            const name = getUrlParameter('name');
+            const sport = getUrlParameter('sport');
+            const date = getUrlParameter('date');
+            const time = getUrlParameter('time');
+            const duration = getUrlParameter('duration');
+
+            // Update the display
+            if (bookingId) {
+                document.getElementById('booking-id-display').textContent = '#' + bookingId;
+            }
+            if (name) {
+                document.getElementById('booking-name').textContent = name;
+            }
+            if (sport) {
+                document.getElementById('booking-sport').textContent = sport;
+            }
+            if (date) {
+                // Format date to Indonesian format
+                const dateObj = new Date(date + 'T00:00:00');
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const formattedDate = dateObj.toLocaleDateString('id-ID', options);
+                document.getElementById('booking-date').textContent = formattedDate;
+            }
+            if (time) {
+                document.getElementById('booking-time').textContent = time + ' WIB';
+            }
+            if (duration) {
+                document.getElementById('booking-duration').textContent = duration + ' Jam';
+            }
+        });
+    </script>
+</body>
+</html>

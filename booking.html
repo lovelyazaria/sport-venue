@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Field - Sports Field Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sports Field Booking</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#sports">Sports</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Booking Section -->
+    <section class="booking page-section">
+        <div class="container">
+            <h2>Book a Field</h2>
+            <form action="booking.php" method="POST" id="booking-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sport">Sport:</label>
+                    <select id="sport" name="sport" required>
+                        <option value="">Select Sport</option>
+                        <option value="1">Football</option>
+                        <option value="2">Basketball</option>
+                        <option value="3">Tennis</option>
+                        <option value="4">Volleyball</option>
+                        <option value="5">Badminton</option>
+                        <option value="6">Swimming</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="field">Field:</label>
+                    <select id="field" name="field_id" required>
+                        <option value="">Select Field</option>
+                        <option value="12">Main Football Field</option>
+                        <option value="13">Training Field 1</option>
+                        <option value="14">Indoor Court 1</option>
+                        <option value="15">Outdoor Court</option>
+                        <option value="16">Clay Court 1</option>
+                        <option value="17">Hard Court 1</option>
+                        <option value="18">Beach Volleyball Court</option>
+                        <option value="19">Indoor Volleyball Court</option>
+                        <option value="20">Badminton Court 1</option>
+                        <option value="21">Badminton Court 2</option>
+                        <option value="22">Main Pool</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duration (hours):</label>
+                    <input type="number" id="duration" name="duration" min="1" max="4" required>
+                </div>
+
+                <button type="submit" class="btn">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
