@@ -1,40 +1,47 @@
 <?php
-// Database configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root'); // Change this to your MySQL username
-define('DB_PASS', ''); // Change this to your MySQL password
+// ==========================
+// ERROR REPORTING (WAJIB)
+// ==========================
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// ==========================
+// DATABASE CONFIG
+// ==========================
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'sports_booking');
 
-// Create database connection
+// ==========================
+// DATABASE CONNECTION
+// ==========================
 function getDBConnection() {
     static $conn = null;
 
     if ($conn === null) {
-        try {
-            $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-            if ($conn->connect_error) {
-                throw new Exception("Connection failed: " . $conn->connect_error);
-            }
-
-            $conn->set_charset("utf8");
-        } catch (Exception $e) {
-            die("Database connection error: " . $e->getMessage());
+        if ($conn->connect_error) {
+            die("Database connection failed: " . $conn->connect_error);
         }
+
+        $conn->set_charset("utf8mb4");
     }
 
     return $conn;
 }
 
-// Function to sanitize input
+// ==========================
+// SANITIZE INPUT
+// ==========================
 function sanitizeInput($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
 }
 
-// Function to get sport name by ID
+// ==========================
+// GET SPORT NAME
+// ==========================
 function getSportName($sportId) {
     $conn = getDBConnection();
     $stmt = $conn->prepare("SELECT name FROM sports WHERE id = ?");
@@ -43,37 +50,33 @@ function getSportName($sportId) {
     $result = $stmt->get_result();
     $sport = $result->fetch_assoc();
     $stmt->close();
+
     return $sport ? $sport['name'] : 'Unknown Sport';
 }
 
-// Function to check if booking slot is available
+// ==========================
+// CHECK SLOT AVAILABILITY
+// ==========================
 function isSlotAvailable($sportId, $date, $time, $duration) {
     $conn = getDBConnection();
 
-    // Calculate end time
-    $startTime = strtotime($time);
-    $endTime = strtotime("+$duration hours", $startTime);
-    $endTimeStr = date('H:i:s', $endTime);
-
-    // Check for overlapping bookings
     $stmt = $conn->prepare("
-        SELECT COUNT(*) as count FROM bookings
+        SELECT COUNT(*) AS total 
+        FROM bookings
         WHERE sport_id = ?
         AND booking_date = ?
         AND status != 'cancelled'
         AND (
-            (booking_time <= ? AND DATE_ADD(booking_time, INTERVAL duration_hours HOUR) > ?) OR
-            (booking_time < ? AND DATE_ADD(booking_time, INTERVAL duration_hours HOUR) >= ?) OR
-            (? <= booking_time AND ? > booking_time)
+            booking_time < ADDTIME(?, SEC_TO_TIME(? * 3600))
+            AND ADDTIME(booking_time, SEC_TO_TIME(duration_hours * 3600)) > ?
         )
     ");
 
-    $stmt->bind_param("issssss", $sportId, $date, $time, $time, $endTimeStr, $endTimeStr, $time, $endTimeStr);
+    $stmt->bind_param("isiss", $sportId, $date, $time, $duration, $time);
     $stmt->execute();
     $result = $stmt->get_result();
-    $count = $result->fetch_assoc()['count'];
+    $count = $result->fetch_assoc()['total'];
     $stmt->close();
 
     return $count == 0;
 }
-?>
