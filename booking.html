@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header / Navbar -->
     <header>
         <nav>
             <div class="logo">
@@ -15,15 +14,13 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#sports">Sports</a></li>
+                <li><a href="sports.html">Sports</a></li>
                 <li><a href="booking.html">Booking</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Booking Section -->
     <section class="booking page-section">
         <div class="container">
             <h2>Book a Field</h2>
@@ -42,30 +39,30 @@
                     <label for="sport">Sport:</label>
                     <select id="sport" name="sport" required>
                         <option value="">Select Sport</option>
-                        <option value="1">Football</option>
-                        <option value="2">Basketball</option>
-                        <option value="3">Tennis</option>
-                        <option value="4">Volleyball</option>
-                        <option value="5">Badminton</option>
-                        <option value="6">Swimming</option>
+                        <option value="Football">Football</option>
+                        <option value="Basketball">Basketball</option>
+                        <option value="Tennis">Tennis</option>
+                        <option value="Volleyball">Volleyball</option>
+                        <option value="Badminton">Badminton</option>
+                        <option value="Swimming">Swimming</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="field">Field:</label>
-                    <select id="field" name="field_id" required>
-                        <option value="">Select Field</option>
-                        <option value="12">Main Football Field</option>
-                        <option value="13">Training Field 1</option>
-                        <option value="14">Indoor Court 1</option>
-                        <option value="15">Outdoor Court</option>
-                        <option value="16">Clay Court 1</option>
-                        <option value="17">Hard Court 1</option>
-                        <option value="18">Beach Volleyball Court</option>
-                        <option value="19">Indoor Volleyball Court</option>
-                        <option value="20">Badminton Court 1</option>
-                        <option value="21">Badminton Court 2</option>
-                        <option value="22">Main Pool</option>
+                    <label for="field_id">Field:</label>
+                    <select id="field_id" name="field_id" required>
+                        <option value="" data-price="0">Select Field</option>
+                        <option value="12" data-price="50000">Main Football Field (Rp 50.000)</option>
+                        <option value="13" data-price="55000">Training Field (Rp 55.000)</option>
+                        <option value="14" data-price="40000">Indoor Basketball Court (Rp 40.000)</option>
+                        <option value="15" data-price="45000">Outdoor Basketball Court (Rp 45.000)</option>
+                        <option value="16" data-price="60000">Tennis Clay Court (Rp 60.000)</option>
+                        <option value="17" data-price="65000">Tennis Hard Court (Rp 65.000)</option>
+                        <option value="18" data-price="40000">Beach Volleyball Court (Rp 40.000)</option>
+                        <option value="19" data-price="45000">Indoor Basketball Court (Rp 45.000)</option>
+                        <option value="20" data-price="30000">Badminton Court 1 (Rp 30.000)</option>
+                        <option value="21" data-price="35000">Badminton Court 2 (Rp 35.000)</option>
+                        <option value="22" data-price="35000">Main Pool (Rp 35.000)</option>
                     </select>
                 </div>
 
@@ -81,7 +78,17 @@
 
                 <div class="form-group">
                     <label for="duration">Duration (hours):</label>
-                    <input type="number" id="duration" name="duration" min="1" max="4" required>
+                    <input type="number" id="duration" name="duration" min="1" max="4" placeholder="1-4 hours" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price_display">Price per Hour:</label>
+                    <input type="text" id="price_display" readonly placeholder="Rp 0">
+                </div>
+
+                <div class="form-group">
+                    <label for="total_price">Total Estimate:</label>
+                    <input type="text" id="total_price" readonly style="font-weight: bold; color: #2ecc71;" placeholder="Rp 0">
                 </div>
 
                 <button type="submit" class="btn">Submit Booking</button>
@@ -89,7 +96,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>

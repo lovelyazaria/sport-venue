@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Success Section with NEW CLASSES -->
     <section class="success-page">
         <div class="success-card">
-            <!-- Header Success -->
             <div class="success-header">
                 <div class="success-icon-circle">
                     <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
@@ -21,35 +19,33 @@
                 <p class="booking-id-text">ID Booking: <span id="booking-id-display">#000</span></p>
             </div>
 
-            <!-- Booking Details -->
             <div class="booking-info-list">
                 <div class="info-row">
                     <span class="info-label">Nama Pelanggan</span>
                     <span class="info-value" id="booking-name">-</span>
                 </div>
-
                 <div class="info-row">
-                    <span class="info-label">Cabang Olahraga</span>
+                    <span class="info-label">Lapangan</span>
                     <span class="info-value" id="booking-sport">-</span>
                 </div>
-
                 <div class="info-row">
                     <span class="info-label">Tanggal</span>
                     <span class="info-value" id="booking-date">-</span>
                 </div>
-
                 <div class="info-row">
                     <span class="info-label">Jam Mulai</span>
                     <span class="info-value special" id="booking-time">WIB</span>
                 </div>
-
                 <div class="info-row">
                     <span class="info-label">Durasi</span>
                     <span class="info-value special" id="booking-duration">Jam</span>
                 </div>
+                <div class="info-row" style="border-top: 1px dashed #ddd; margin-top: 10px; padding-top: 10px;">
+                    <span class="info-label">Total Bayar</span>
+                    <span class="info-value" id="booking-total" style="color: #f97316; font-weight: bold;">Rp 0</span>
+                </div>
             </div>
 
-            <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="btn-save" onclick="window.print()">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -59,54 +55,43 @@
                     </svg>
                     Simpan Bukti
                 </button>
-
-                <a href="index.html" class="btn-home">
-                    Kembali ke Home
-                </a>
+                <a href="index.html" class="btn-home">Kembali ke Home</a>
             </div>
         </div>
     </section>
 
     <script>
-        // Get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // Populate booking details
         window.addEventListener('DOMContentLoaded', function() {
-            const bookingId = getUrlParameter('id');
-            const name = getUrlParameter('name');
-            const sport = getUrlParameter('sport');
-            const date = getUrlParameter('date');
-            const time = getUrlParameter('time');
-            const duration = getUrlParameter('duration');
+            // Ambil data dari localStorage
+            const rawData = localStorage.getItem('dataBookingUser');
+            
+            if (rawData) {
+                const data = JSON.parse(rawData);
 
-            // Update the display
-            if (bookingId) {
-                document.getElementById('booking-id-display').textContent = '#' + bookingId;
-            }
-            if (name) {
-                document.getElementById('booking-name').textContent = name;
-            }
-            if (sport) {
-                document.getElementById('booking-sport').textContent = sport;
-            }
-            if (date) {
-                // Format date to Indonesian format
-                const dateObj = new Date(date + 'T00:00:00');
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                const formattedDate = dateObj.toLocaleDateString('id-ID', options);
-                document.getElementById('booking-date').textContent = formattedDate;
-            }
-            if (time) {
-                document.getElementById('booking-time').textContent = time + ' WIB';
-            }
-            if (duration) {
-                document.getElementById('booking-duration').textContent = duration + ' Jam';
+                // 1. Tampilkan ID Booking Acak
+                const randomId = Math.floor(100000 + Math.random() * 900000);
+                document.getElementById('booking-id-display').textContent = '#' + randomId;
+
+                // 2. Isi Data Dasar
+                document.getElementById('booking-name').textContent = data.name || '-';
+                document.getElementById('booking-sport').textContent = data.sport || '-';
+                document.getElementById('booking-time').textContent = (data.time || '-') + ' WIB';
+                document.getElementById('booking-duration').textContent = (data.duration || '-') + ' Jam';
+                
+                // 3. Isi Total Harga (Data diambil dari totalDisplay.value di script.js)
+                if (data.total) {
+                    document.getElementById('booking-total').textContent = data.total;
+                }
+
+                // 4. Format Tanggal Indonesia
+                if (data.date) {
+                    const dateObj = new Date(data.date + 'T00:00:00');
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    document.getElementById('booking-date').textContent = dateObj.toLocaleDateString('id-ID', options);
+                }
+            } else {
+                alert("Data tidak ditemukan!");
+                window.location.href = 'booking.html';
             }
         });
     </script>

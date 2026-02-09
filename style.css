@@ -23,7 +23,7 @@ html {
 
 /* Header & Navigation */
 header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
   color: white;
   padding: 1rem 0;
   position: fixed;
@@ -67,7 +67,7 @@ nav {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%),
               url('https://images.unsplash.com/photo-1556056504-5c7696c4c28d?w=1600') center/cover;
   height: 100vh;
   display: flex;
@@ -110,8 +110,8 @@ nav {
 /* Button Styles */
 .btn {
   display: inline-block;
-  background: white;
-  color: #667eea;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
   padding: 12px 30px;
   text-decoration: none;
   border-radius: 30px;
@@ -124,12 +124,12 @@ nav {
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.4);
 }
 
 .btn-small {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   color: white;
   padding: 8px 20px;
   text-decoration: none;
@@ -142,62 +142,194 @@ nav {
 
 .btn-small:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
 }
 
 .btn-secondary {
   background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #0ea5e9;
+  border: 2px solid #0ea5e9;
 }
 
 .btn-secondary:hover {
-  background: #667eea;
+  background: #0ea5e9;
   color: white;
 }
 
-/* Sports Section */
+/* ===== SPORTS SECTION (NEW) ===== */
 .sports {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: #f1f5f9;
 }
 
 .sports h2 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   margin-bottom: 3rem;
-  color: #667eea;
+  color: #0f172a;
+  font-weight: 700;
 }
 
+/* Grid */
 .sports-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
 }
 
+/* Card */
 .sport-item {
   background: white;
-  padding: 2rem;
-  border-radius: 15px;
+  border-radius: 18px;
+  padding: 2.2rem 2rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sport-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1e40af, #0ea5e9);
+  opacity: 0;
+  transition: 0.35s ease;
+  z-index: 0;
+}
+
+.sport-item:hover::before {
+  opacity: 1;
+}
+
+.sport-item * {
+  position: relative;
+  z-index: 1;
 }
 
 .sport-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  transform: translateY(-12px);
 }
 
+/* Icon / Title */
 .sport-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #764ba2;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: #0f172a;
+  transition: color 0.3s;
 }
 
 .sport-item p {
-  color: #666;
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+
+/* Hover text color */
+.sport-item:hover h3,
+.sport-item:hover p {
+  color: white;
+}
+
+/* Button */
+.sport-item .btn-small {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: #1e40af;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sport-item:hover .btn-small {
+  background: white;
+  color: #1e40af;
+}
+
+/* ===== POPUP VENUE ===== */
+.venue-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.venue-popup.active {
+  display: flex;
+}
+
+.venue-box {
+  background: white;
+  width: 90%;
+  max-width: 520px;
+  border-radius: 18px;
+  padding: 30px;
+  position: relative;
+  animation: scaleUp 0.3s ease;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.venue-box h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1e40af;
+}
+
+/* Venue list */
+.venue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.venue-item {
+  background: #f1f5f9;
+  padding: 15px 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.venue-item span {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.venue-item a {
+  background: #1e40af;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-decoration: none;
 }
 
 /* Page Section Styling */
@@ -209,20 +341,20 @@ nav {
 /* Booking Section */
 .booking {
   padding: 80px 0;
-  background: white;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
 }
 
 .booking h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #667eea;
+  color: white;
 }
 
 #booking-form {
   max-width: 600px;
   margin: 0 auto;
-  background: #f8f9fa;
+  background: white;
   padding: 3rem;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -236,7 +368,7 @@ nav {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #495057;
+  color: #0f172a;
 }
 
 .form-group input,
@@ -253,12 +385,19 @@ nav {
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #0ea5e9;
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 #booking-form .btn {
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: white;
   padding: 15px;
   font-size: 1.1rem;
@@ -267,18 +406,19 @@ nav {
 
 #booking-form .btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
 }
 
 /* Error Message Styling */
 .error-message {
-  background: #f8d7da;
-  color: #721c24;
+  background: #fef2f2;
+  color: #991b1b;
   padding: 15px;
   border-radius: 8px;
   margin: 20px auto;
   max-width: 600px;
   text-align: center;
-  border: 1px solid #f5c6cb;
+  border: 1px solid #fecaca;
   animation: slideDown 0.3s ease;
 }
 
@@ -296,7 +436,7 @@ nav {
 /* About Section */
 .about {
   padding: 80px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
   color: white;
   text-align: center;
 }
@@ -361,6 +501,50 @@ nav {
   font-size: 2rem;
 }
 
+/* ===== Office Section ===== */
+.office {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.office h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.office-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.office-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.office-card h3 {
+    margin-bottom: 10px;
+}
+
+.office-card p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* ===== Responsive Google Maps ===== */
+.office-card iframe {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+}
+
+
 /* Contact Section */
 .contact {
   padding: 80px 0;
@@ -371,7 +555,7 @@ nav {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #667eea;
+  color: #1e40af;
 }
 
 .contact-wrapper {
@@ -383,7 +567,7 @@ nav {
 }
 
 .contact-info {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   padding: 2rem;
   border-radius: 15px;
   color: white;
@@ -429,25 +613,25 @@ nav {
 
 #contact-form .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #0ea5e9;
 }
 
 #contact-form .btn {
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: white;
   padding: 15px;
   font-size: 1.1rem;
   margin-top: 1rem;
 }
 
-/* Success Page - New Modern Layout */
+/* Success Page */
 .success-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
   padding: 2rem 1rem;
 }
 
@@ -474,7 +658,7 @@ nav {
 
 /* Success Header */
 .success-header {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   padding: 3rem 2rem 2.5rem;
   text-align: center;
@@ -504,7 +688,7 @@ nav {
 .checkmark {
   width: 50px;
   height: 50px;
-  stroke: #22c55e;
+  stroke: #10b981;
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -572,7 +756,7 @@ nav {
 }
 
 .info-value.special {
-  color: #0f172a;
+  color: #059669;
   font-weight: 700;
   font-size: 1rem;
 }
@@ -586,7 +770,7 @@ nav {
 }
 
 .btn-save {
-  background: #3b82f6;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   color: white;
   border: none;
   padding: 1rem 1.5rem;
@@ -603,9 +787,9 @@ nav {
 }
 
 .btn-save:hover {
-  background: #2563eb;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 16px rgba(14, 165, 233, 0.3);
 }
 
 .btn-save:active {
@@ -696,73 +880,164 @@ nav {
   }
 }
 
-.success-container h1 {
-  color: #667eea;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+/* ================= SUCCESS PAGE ================= */
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+  padding: 2rem 1rem;
 }
 
-.booking-details {
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 2rem;
-  margin: 2rem 0;
-  text-align: left;
+.success-card {
+  background: white;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.6s ease-out;
 }
 
-.booking-details h2 {
-  color: #667eea;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+/* ================= SUCCESS HEADER ================= */
+.success-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+  color: white;
+  padding: 3rem 2rem 2.5rem;
   text-align: center;
 }
 
-.detail-item {
+.success-icon-circle {
+  width: 80px;
+  height: 80px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.5s ease-out 0.2s both;
+}
+
+.checkmark {
+  width: 50px;
+  height: 50px;
+  stroke: #2563eb;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: drawCheck 0.5s ease-out 0.5s forwards;
+}
+
+.success-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.booking-id-text {
+  font-size: 1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+#booking-id-display {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ================= BOOKING INFO ================= */
+.info-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #e9ecef;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.2s ease;
 }
 
-.detail-item:last-child {
-  border-bottom: none;
+.info-row:hover {
+  background: #f8fafc;
 }
 
-.detail-label {
+.info-label {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #1e293b;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #495057;
+  text-align: right;
 }
 
-.detail-value {
-  color: #212529;
+.info-value.special {
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
-.booking-id {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
+/* ================= TOTAL BAYAR ================= */
+#booking-total {
+  color: #f97316;
+  font-weight: 800;
   font-size: 1.2rem;
-  margin-top: 1.5rem;
 }
 
-.success-message {
-  margin: 2rem 0;
-  color: #666;
-  line-height: 1.8;
-}
-
-.success-actions {
+/* ================= BUTTONS ================= */
+.btn-save {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
-  gap: 1rem;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+}
+
+.btn-home {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn-home:hover {
+  background: #cbd5e1;
+  color: #1e293b;
+}
+
+/* ================= OLD SUCCESS (COMPATIBILITY) ================= */
+.success-container h1 {
+  color: #2563eb;
 }
 
 /* Footer */
 footer {
-  background: #2c3e50;
+  background: #0f172a;
   color: white;
   text-align: center;
   padding: 2rem 0;
