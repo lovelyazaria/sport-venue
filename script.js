@@ -1,71 +1,89 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. SELEKSI ELEMEN ---
-    const fieldSelect = document.getElementById('field_id');
-    const durationInput = document.getElementById('duration');
-    const timeInput = document.getElementById('time'); // ✅ TAMBAHAN
-    const priceDisplay = document.getElementById('price_display');
-    const totalDisplay = document.getElementById('total_price');
-    const bookingForm = document.getElementById('booking-form');
+document.addEventListener('DOMContentLoaded', function () {
 
-    // --- 2. FUNGSI UPDATE HARGA ---
+    // === 1. SELEKSI ELEMEN (AMAN) ===
+    const fieldSelect   = document.getElementById('field_id');
+    const durationInput = document.getElementById('duration');
+    const timeInput     = document.getElementById('time');
+    const dateInput     = document.getElementById('date');
+    const nameInput     = document.getElementById('name');
+    const priceDisplay  = document.getElementById('price_display');
+    const totalDisplay  = document.getElementById('total_price');
+    const bookingForm   = document.getElementById('booking-form');
+
+    // === 2. UPDATE HARGA ===
     function updatePrice() {
-        if (!fieldSelect || !priceDisplay) return;
+        if (!fieldSelect || !durationInput || !priceDisplay || !totalDisplay) return;
 
         const selectedOption = fieldSelect.options[fieldSelect.selectedIndex];
-        const pricePerHour = parseInt(selectedOption.getAttribute('data-price')) || 0;
-        const duration = parseInt(durationInput.value) || 0;
+        const pricePerHour  = parseInt(selectedOption?.dataset.price || 0);
+        const duration      = parseInt(durationInput.value || 0);
 
-        priceDisplay.value = pricePerHour > 0
+        priceDisplay.value = pricePerHour
             ? "Rp " + pricePerHour.toLocaleString('id-ID')
             : "Rp 0";
 
         const totalPrice = pricePerHour * duration;
-        if (totalDisplay) {
-            totalDisplay.value = totalPrice > 0
-                ? "Rp " + totalPrice.toLocaleString('id-ID')
-                : "Rp 0";
-        }
+        totalDisplay.value = totalPrice
+            ? "Rp " + totalPrice.toLocaleString('id-ID')
+            : "Rp 0";
     }
 
-    if (fieldSelect) fieldSelect.addEventListener('change', updatePrice);
+    if (fieldSelect)   fieldSelect.addEventListener('change', updatePrice);
     if (durationInput) durationInput.addEventListener('input', updatePrice);
 
-    // --- 3. FORM SUBMISSION & STORAGE ---
+    // auto hitung saat load
+    updatePrice();
+
+    // === 3. SUBMIT FORM ===
     if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
+        bookingForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const duration = parseInt(durationInput.value);
-            const dateValue = document.getElementById('date').value;
-            const timeValue = timeInput.value; // ✅ FIX JAM
+            // VALIDASI FIELD WAJIB
+            if (!nameInput?.value.trim()) {
+                alert('Nama wajib diisi');
+                return;
+            }
 
-            // VALIDASI JAM
-            if (!timeValue) {
+            if (!fieldSelect?.value) {
+                alert('Pilih lapangan terlebih dahulu');
+                return;
+            }
+
+            if (!dateInput?.value) {
+                alert('Tanggal wajib diisi');
+                return;
+            }
+
+            if (!timeInput?.value) {
                 alert('Jam booking wajib diisi');
                 return;
             }
 
-            if (duration < 1 || duration > 4) {
-                alert('Duration must be between 1 and 4 hours');
+            const duration = parseInt(durationInput.value);
+            if (isNaN(duration) || duration < 1 || duration > 4) {
+                alert('Durasi harus antara 1–4 jam');
                 return;
             }
 
-            const selectedDate = new Date(dateValue);
+            // VALIDASI TANGGAL
+            const selectedDate = new Date(dateInput.value);
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
             if (selectedDate < today) {
-                alert('Please select a valid date');
+                alert('Tanggal tidak boleh di masa lalu');
                 return;
             }
 
-            // ✅ DATA LENGKAP & KONSISTEN
+            // === DATA FINAL ===
             const bookingData = {
-                name: document.getElementById('name').value,
+                name: nameInput.value.trim(),
                 sport: fieldSelect.options[fieldSelect.selectedIndex].text,
-                date: dateValue,
-                time: timeValue, // ✅ SEKARANG PASTI MASUK
+                date: dateInput.value,
+                time: timeInput.value,
                 duration: duration,
+                pricePerHour: priceDisplay.value,
                 total: totalDisplay.value
             };
 
@@ -74,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 4. SMOOTH SCROLLING ---
+    // === 4. SMOOTH SCROLL ===
     document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const target = document.getElementById(this.getAttribute('href').substring(1));
             if (target) {
                 e.preventDefault();
@@ -87,4 +105,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });

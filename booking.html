@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Field - Sports Field Booking</title>
+    <title>Book a Field - Arena Book</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <h1>Sports Field Booking</h1>
+                <img src="pict_court/logo.jpeg" alt="Logo" class="logo-img">
+                <h1>Arena Book</h1>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sports.html">Sports</a></li>
+               <li><a href="index.html">Home</a></li>
                 <li><a href="booking.html">Booking</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.php">Profile</a></li>
             </ul>
         </nav>
     </header>
@@ -52,17 +54,17 @@
                     <label for="field_id">Field:</label>
                     <select id="field_id" name="field_id" required>
                         <option value="" data-price="0">Select Field</option>
-                        <option value="12" data-price="50000">Main Football Field (Rp 50.000)</option>
-                        <option value="13" data-price="55000">Training Field (Rp 55.000)</option>
-                        <option value="14" data-price="40000">Indoor Basketball Court (Rp 40.000)</option>
-                        <option value="15" data-price="45000">Outdoor Basketball Court (Rp 45.000)</option>
-                        <option value="16" data-price="60000">Tennis Clay Court (Rp 60.000)</option>
-                        <option value="17" data-price="65000">Tennis Hard Court (Rp 65.000)</option>
+                        <option value="12" data-price="100000">Training Football Field (Rp 100.000)</option>
+                        <option value="13" data-price="150000">TMain Football Field (Rp 150.000)</option>
+                        <option value="14" data-price="60000">Outdoor Basketball Court (Rp 60.000)</option>
+                        <option value="15" data-price="65000">Indoor Basketball Court (Rp 65.000)</option>
+                        <option value="16" data-price="80000">Outdoor Tennis Court (Rp 80.000)</option>
+                        <option value="17" data-price="85000">Indoor Tennis Court (Rp 85.000)</option>
                         <option value="18" data-price="40000">Beach Volleyball Court (Rp 40.000)</option>
-                        <option value="19" data-price="45000">Indoor Basketball Court (Rp 45.000)</option>
+                        <option value="19" data-price="45000">Indoor Volleyball Court (Rp 45.000)</option>
                         <option value="20" data-price="30000">Badminton Court 1 (Rp 30.000)</option>
                         <option value="21" data-price="35000">Badminton Court 2 (Rp 35.000)</option>
-                        <option value="22" data-price="35000">Main Pool (Rp 35.000)</option>
+                        <option value="22" data-price="50000">Main Pool (Rp 50.000)</option>
                     </select>
                 </div>
 
@@ -77,8 +79,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="duration">Duration (hours):</label>
-                    <input type="number" id="duration" name="duration" min="1" max="4" placeholder="1-4 hours" required>
+                     <label for="duration">Duration (hours):</label>
+                     <select id="duration" name="duration" required>
+                        <option value="">-- 1-4 hours --</option>
+                        <option value="1">1 hour</option>
+                        <option value="2">2 hours</option>
+                        <option value="3">3 hours</option>
+                        <option value="4">4 hours</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

@@ -3,81 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports - Sports Field Booking</title>
+    <title>Sports - Arena Book</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <nav>
-        <div class="logo">
-            <h1>Sports Venue</h1>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sports.html">Sports</a></li>
-            <li><a href="booking.html">Booking</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section id="sports" class="sports">
-    <div class="container">
-        <h2>Sports Venue</h2>
-
-        <div class="sport-item" data-sport="football">
-            <h3>⚽ Football</h3>
-            <p>Grass and turf fields available.</p>
-            <a href="#" class="btn-small">View Venue</a>
-        </div>
-        
-        <div class="sport-item" data-sport="basketball">
-            <h3>🏀 Basketball</h3>
-             <p>Indoor and outdoor courts.</p>
-             <a href="#" class="btn-small">View Venue</a>
+    <!-- Header / Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="pict_court/logo.jpeg" alt="Logo" class="logo-img">
+                <h1>Arena Book</h1>
             </div>
-            
-            <div class="sport-item" data-sport="tennis">
-                <h3>🎾 Tennis</h3>
-                <p>Clay and hard courts.</p>
-                <a href="#" class="btn-small">View Venue</a>
-            </div>
-            
-            <div class="sport-item" data-sport="badminton">
-                <h3>🏸 Badminton</h3>
-                <p>Indoor courts for badminton.</p>
-                <a href="#" class="btn-small">View Venue</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="profile.php">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- Sports Section -->
+    <section id="sports" class="sports">
+        <div class="container">
+            <h2>Available Sports</h2>
+            <div class="sports-grid">
+                <div class="sport-item">
+                    <h3>⚽ Football</h3>
+                    <p>Grass and turf fields available.</p>
+                    <div class="sport-buttons">
+                        <a href="football.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="sport-item">
+                    <h3>🏀 Basketball</h3>
+                    <p>Indoor and outdoor courts.</p>
+                    <div class="sport-buttons">
+                        <a href="basketball.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="sport-item">
+                    <h3>🎾 Tennis</h3>
+                    <p>Clay and hard courts.</p>
+                    <div class="sport-buttons">
+                        <a href="tennis.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="sport-item">
+                    <h3>🏐 Volleyball</h3>
+                    <p>Beach and indoor volleyball.</p>
+                    <div class="sport-buttons">
+                        <a href="volleyball.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="sport-item">
+                    <h3>🏸 Badminton</h3>
+                    <p>Indoor courts for badminton.</p>
+                    <div class="sport-buttons">
+                        <a href="badminton.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
+                <div class="sport-item">
+                    <h3>🏊 Swimming</h3>
+                    <p>Pool reservations.</p>
+                    <div class="sport-buttons">
+                        <a href="swimming.html" class="btn-small btn-view">View</a>
+                        <a href="booking.html" class="btn-small">Book Now</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- POPUP VENUE -->
-<div class="venue-popup" id="venuePopup">
-  <div class="venue-box">
-    <span class="close-popup">&times;</span>
-    <h3 id="popupTitle">Venue</h3>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>
+        </div>
+    </footer>
 
-    <div class="venue-list" id="venueList"></div>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div id="fieldModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2 id="modalTitle"></h2>
-        <ul id="fieldList" class="field-list"></ul>
-    </div>
-</div>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
