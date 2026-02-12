@@ -267,7 +267,7 @@ $showLogin = isset($_GET['login']) || !$isLoggedIn;
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Sports Field Booking. All rights reserved.</p>
+            <p>&copy; 2026 Arena. All rights reserved.</p>
         </div>
     </footer>
 
